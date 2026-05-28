@@ -11,7 +11,7 @@ router.get('/stats', async (req, res) => {
   try {
     const [[{ totalUsers }]] = await db.query('SELECT COUNT(*) as totalUsers FROM users');
     const [[{ totalJobs }]] = await db.query('SELECT COUNT(*) as totalJobs FROM jobs');
-    const [[{ activeJobs }]] = await db.query('SELECT COUNT(*) as activeJobs FROM jobs WHERE status = "active"');
+    const [[{ activeJobs }]] = await db.query("SELECT COUNT(*) as activeJobs FROM jobs WHERE status = 'active'");
     const [[{ totalApplications }]] = await db.query('SELECT COUNT(*) as totalApplications FROM applications');
     const [[{ totalEmployers }]] = await db.query('SELECT COUNT(*) as totalEmployers FROM employers');
     const [[{ totalViews }]] = await db.query('SELECT SUM(views) as totalViews FROM jobs');

@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
   const offset = (parseInt(page) - 1) * parseInt(limit);
   const params = [];
-  let where = 'WHERE j.status = "active"';
+  let where = "WHERE j.status = 'active'";
 
   if (search) {
     where += ' AND (j.title LIKE ? OR j.description LIKE ? OR e.company_name LIKE ?)';
@@ -82,7 +82,7 @@ router.get('/', async (req, res) => {
 router.get('/categories', async (req, res) => {
   try {
     const [rows] = await db.query(
-      'SELECT DISTINCT category FROM jobs WHERE category IS NOT NULL AND status = "active" ORDER BY category'
+      "SELECT DISTINCT category FROM jobs WHERE category IS NOT NULL AND status = 'active' ORDER BY category"
     );
     res.json({ success: true, categories: rows.map(r => r.category) });
   } catch (err) {
